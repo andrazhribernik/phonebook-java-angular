@@ -11,6 +11,7 @@ Requirements
 
 Installation
 ============
-1. cd <prject root dir>
-2. mvn clean
-3. mvn wildfly:deploy
+1. Run server using: < server dir > /bin/bin/standalone.sh
+2. Go to project root dir (< project root dir >)
+3. mvn clean
+4. mvn wildfly:deploy
