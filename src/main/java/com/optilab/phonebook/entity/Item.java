@@ -2,7 +2,6 @@ package com.optilab.phonebook.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,9 +18,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @SuppressWarnings("serial")
 @Entity
 @XmlRootElement
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "phoneNumber"))
 @NamedQueries({
-    @NamedQuery (name="Item.findAll",
-                query="SELECT i FROM Item i"),
+    @NamedQuery (name="Item.findAll", query="SELECT i FROM Item i"),
+    @NamedQuery (name="Item.findById", query="SELECT i FROM Item i WHERE i.id = :id"),
 }) 
 public class Item implements Serializable {
 	
@@ -38,6 +38,14 @@ public class Item implements Serializable {
     @Size(min = 9, max = 12)
     @Digits(fraction = 0, integer = 12)
     private String phoneNumber;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -54,7 +62,4 @@ public class Item implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-
 }

@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="phonebookApp">
 <head>
-<meta charset="US-ASCII">
-<title>Insert title here</title>
+  <title>Phone book</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-resource.js"></script>
+  
+  <script src="js/app.js"></script>
+  <script src="js/controllers/phonebook.js"></script>
 </head>
 <body>
-Test
+  <div id="content" class="content" ng-view></div>
+  
+  
 </body>
 </html>
