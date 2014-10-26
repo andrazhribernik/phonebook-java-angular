@@ -70,6 +70,6 @@ public class ItemCRUD {
     
     public List<Item> getAll() {
     	return (List <Item>) em.createNamedQuery("Item.findAll")
-        .getResultList();
+    			.getResultList();
     }
 }
