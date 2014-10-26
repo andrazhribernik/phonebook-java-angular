@@ -7,18 +7,22 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
   
-    <button class="btn btn-primary" ng-click="open()">Add</button>
-    <div class="alert alert-success alert-dismissible" ng-show="sucess">Item has been added successfully.</div>
-    
+    <button class="btn btn-success" ng-click="add()">Add</button>
+    <div class="alert alert-success  alert-dismissible" role="alert" ng-show="success">
+      <button type="button" class="close" data-dismiss="alert" ng-click="success=false"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      {{message}}
+    </div>
     <table class="table table-striped" ng-show="items.length > 0">
       <thead>
-        <tr><td>#</td><td>Name</td><td>Phone number</td></tr>
+        <tr><td>#</td><td>Name</td><td>Phone number</td><td></td><td></td></tr>
       </thead>
       <tbody>
         <tr ng-repeat="item in items">
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>{{item.phoneNumber}}</td>
+          <td><button class="btn btn-default" ng-click="edit(item)">Edit</button></td>
+          <td><button class="btn btn-danger" ng-click="removeItem(item)">Delete</button></td>
         </tr>
       </tbody>
     </table>

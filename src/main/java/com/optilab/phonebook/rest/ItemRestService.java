@@ -12,6 +12,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -64,6 +65,25 @@ public class ItemRestService {
 
         return builder.build();
 	}
+	
+	@PUT
+    @Path("/{id:[0-9][0-9]*}")
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response editItem(@PathParam("id") long id, Item item) {
+		Response.ResponseBuilder builder = null;
+        try {
+	        itemCRUD.editItemById(item);
+	        builder = Response.ok();
+        }
+        catch(Exception e){
+        	Map<String, String> responseObj = new HashMap<String, String>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        
+        return builder.build();
+    }
 	
 	@DELETE
     @Path("/{id:[0-9][0-9]*}")

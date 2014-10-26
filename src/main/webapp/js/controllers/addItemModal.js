@@ -1,9 +1,12 @@
-angular.module('phonebookApp').controller('AddItemCtrl', function ($scope, $modalInstance, item) {
+angular.module('phonebookApp').controller('AddItemCtrl', function ($scope, $modalInstance, item, modalType) {
 
   $scope.newItem = item;
-  console.log(item);
+  console.log(modalType);
   $scope.ok = function () {
-    $modalInstance.close($scope.newItem);
+    $modalInstance.close({
+      item: $scope.newItem,
+      modalType: modalType	
+    });
   };
 
   $scope.cancel = function () {

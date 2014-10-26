@@ -50,6 +50,24 @@ public class ItemCRUD {
     	}
     }
     
+    public void editItemById(Item item) throws NoResultException, Exception {
+    	Item i = (Item) em.createNamedQuery("Item.findById").setParameter("id", item.getId())
+  		      .getSingleResult();
+    	if (i == null) {
+    		throw new NoResultException();
+    	}
+    	
+    	try {
+    		i.setName(item.getName());
+    		i.setPhoneNumber(item.getPhoneNumber());
+	    	em.persist(i);;
+	    	log.info("Item with id " + i.getId() + "is updated");
+    	}
+    	catch (Exception e){
+    		throw e;
+    	}
+    }
+    
     public List<Item> getAll() {
     	return (List <Item>) em.createNamedQuery("Item.findAll")
         .getResultList();
