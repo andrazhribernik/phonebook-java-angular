@@ -1,3 +1,26 @@
-<div>
- test text. {{message}}
+<div class="row">
+  <div class="jumbotron col-md-10 col-md-offset-1">
+    <h1>Phonebook</h1>
+    <p>This is a sample web application to demonstrate Angular CRUD app using JAVA EE 7 REST services.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+  
+    <button class="btn btn-primary" ng-click="open()">Add</button>
+    <div class="alert alert-success alert-dismissible" ng-show="sucess">Item has been added successfully.</div>
+    
+    <table class="table table-striped" ng-show="items.length > 0">
+      <thead>
+        <tr><td>#</td><td>Name</td><td>Phone number</td></tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in items">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.phoneNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

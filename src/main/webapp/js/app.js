@@ -1,5 +1,5 @@
 
-var app = angular.module('phonebookApp', ['ngRoute']);
+var app = angular.module('phonebookApp', ['ui.bootstrap', 'ngRoute', 'itemService']);
 
 app.config([
     '$routeProvider', function($routeProvider) {
